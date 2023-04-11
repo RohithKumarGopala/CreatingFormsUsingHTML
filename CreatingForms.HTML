@@ -52,7 +52,7 @@
                     <output class="salary-output" for="salary">400000</output>
                 </div>
                 <div>
-                    <button>Submit</button>
+                    <button type="submit" onclick="saveData()"  id="Submit">Submit</button>
                 </div>
             </form>
             
@@ -85,7 +85,7 @@
                 const tel = document.querySelector('#tel');
                 const telError = document.querySelector('.tel-error');
                 tel.addEventListener('input',function(){
-                    let telRegex = RegExp('[19]{2}\\s[0-9]{10}');
+                    let telRegex = RegExp("[19]{2}\\s[6-9]{1}[0-9]{9}");
                     if(telRegex.test(tel.value))
                     telError.textContent = "";
                     else telError.textContent ="mobilenumber is Incorrect";
@@ -94,8 +94,19 @@
                 const output = document.querySelector('.salary-output');
                 output.textContent = salary.value;
                 salary.addEventListener('input',function(){ 
-                output.textContent = salary.value;
+                    output.textContent = salary.value;
                 }); 
-            </script>
+
+                function saveData()
+                   {
+            
+                localStorage.setItem('name',document.getElementById("text").value);
+                localStorage.setItem('pwd',document.getElementById("pwd").value);
+                localStorage.setItem('email',document.getElementById("email").value);
+                localStorage.setItem('tel',document.getElementById("tel").value);
+                localStorage.setItem('salary',document.getElementById("salary").value);
+            
+                   }
+                </script>
     </body>
 </html>
